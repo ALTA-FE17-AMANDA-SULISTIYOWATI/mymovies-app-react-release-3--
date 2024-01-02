@@ -1,6 +1,8 @@
 import Button from "@/components/button"
 import BookmarkIcon from "@/core/icons/bookmark"
+import DownloadIcon from "@/core/icons/download"
 import PlayIcon from "@/core/icons/play"
+import ShareIcon from "@/core/icons/share"
 import { Component } from "react"
 
 class Home extends Component {
@@ -34,8 +36,8 @@ class Home extends Component {
               </div>
             </div>
             <div className="flex items-end gap-6">
-              <Button title="Download" />
-              <Button title="Share" />
+              <Button title="Download" icon={<DownloadIcon />} />
+              <Button title="Share" icon={<ShareIcon />} />
               <Button title="Like" />
             </div>
           </div>
