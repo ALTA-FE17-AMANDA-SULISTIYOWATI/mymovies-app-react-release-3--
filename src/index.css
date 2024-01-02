@@ -18,12 +18,3 @@
     transparent 100%
   );
 }
-
-.Card {
-  position: relative;
-  transition: transform 0.3s ease-in-out;
-}
-
-.Card:hover {
-  transform: scale(1.05);
-}

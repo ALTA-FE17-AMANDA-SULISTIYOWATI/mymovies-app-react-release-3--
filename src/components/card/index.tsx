@@ -12,14 +12,14 @@ class Card extends Component<Props> {
     const { url, title, icon, rating } = this.props
 
     return (
-      <div className="Card w-56 h-64">
-        <div className="w-56 h-44">
+      <div className="hover:scale-105 transition duration-300 ease-in-out w-full">
+        <div className="">
           <img className="h-40 rounded-2xl" src={url} />
         </div>
-        <div className="card-content">
+        <div className="mt-2">
           <div>{title}</div>
         </div>
-        <div className="flex">
+        <div className="flex items-center gap-2">
           {icon}
           {rating}
         </div>

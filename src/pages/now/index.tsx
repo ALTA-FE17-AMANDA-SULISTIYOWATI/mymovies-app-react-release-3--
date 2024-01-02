@@ -1,16 +1,48 @@
-import React, { Component } from "react"
+import { Component } from "react"
 import Card from "@/components/card"
 import StarIcon from "@/core/icons/star"
 
 class Now extends Component {
   render() {
+    const cards = [
+      {
+        url: "/images/Topgun.png",
+        title: "TOP GUN: Maverick",
+        icon: <StarIcon />,
+        rating: 4.6,
+      },
+      {
+        url: "/images/spiderman.png",
+        title: "Spiderman: into the spider verse",
+        icon: <StarIcon />,
+        rating: 4.6,
+      },
+      {
+        url: "/images/blackpanther.png",
+        title: "Black Panther: Wakanda Forever",
+        icon: <StarIcon />,
+        rating: 4.6,
+      },
+    ]
+
     return (
       <div>
         <div className="text-[#F9F9F9] text-xl font-bold  px-8 p-6">
           Now Playing
         </div>
         <div className="flex gap-6 items-center justify-center flex-wrap">
-          <div className="flex">
+          {cards.map((card, index) => (
+            <div className="flex">
+              <Card
+                key={index}
+                url={card.url}
+                title={card.title}
+                icon={card.icon}
+                rating={card.rating}
+              />
+            </div>
+          ))}
+          {/* <div className="flex">
             <Card
               url="/images/Topgun.png"
               title="TOP GUN: Maverick"
@@ -129,7 +161,7 @@ class Now extends Component {
               icon={<StarIcon />}
               rating={4.6}
             />
-          </div>
+          </div> */}
         </div>
       </div>
     )
