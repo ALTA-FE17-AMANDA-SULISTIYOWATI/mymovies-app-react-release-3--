@@ -1,30 +1,57 @@
 import { LogoIcon } from "@/core/icons"
 import { Component } from "react"
-import { Link, Outlet } from "react-router-dom"
+import { Outlet, RouterProps } from "react-router-dom"
 import { MdDarkMode } from "react-icons/md"
 import { withRouter } from "@/core/utils/withRouter"
 import { ComponentProps } from "@/core/utils/withRouter"
 
-class Navbar extends Component<ComponentProps> {
+interface NavbarProps extends ComponentProps, RouterProps {
+  homeRef: React.RefObject<HTMLDivElement>
+  nowRef: React.RefObject<HTMLDivElement>
+  favRef: React.RefObject<HTMLDivElement>
+  scrollToSection: (elementRef: React.RefObject<HTMLDivElement>) => void
+}
+
+interface NavbarState {
+  activeMenuItem: string | null
+}
+
+class Navbar extends Component<NavbarProps, NavbarState> {
+  constructor(props: NavbarProps) {
+    super(props)
+    this.state = {
+      activeMenuItem: null,
+    }
+  }
+
+  handleMenuItemClick = (
+    path: string,
+    url: React.RefObject<HTMLDivElement>
+  ) => {
+    this.props.scrollToSection(url)
+    this.setState({
+      activeMenuItem: path,
+    })
+  }
+
   render() {
-    const { router } = this.props
-
-    const { location } = router
-
-    const { pathname } = location
+    const { homeRef, nowRef, favRef } = this.props
 
     const menus = [
       {
         name: "Home",
         path: "/",
+        url: homeRef,
       },
       {
         name: "Now Playing",
         path: "/now",
+        url: nowRef,
       },
       {
         name: "Favorite",
         path: "/favorite",
+        url: favRef,
       },
     ]
 
@@ -36,23 +63,29 @@ class Navbar extends Component<ComponentProps> {
           {/* menu region */}
           <div className="flex gap-10 items-center mt-4">
             {menus.map((el, i) => (
-              <Link key={i} to={el.path}>
+              <div
+                key={i}
+                onClick={() => this.handleMenuItemClick(el.path, el.url)}
+                className="cursor-pointer"
+              >
                 <div
                   className={`pb-4 ${
-                    pathname === el.path
+                    this.state.activeMenuItem === el.path
                       ? "border-b-greenColor border-b-4 pb-3"
                       : ""
                   } `}
                 >
                   <div
                     className={`text-[16px] ${
-                      pathname === el.path ? "font-bold" : "font-normal"
+                      this.state.activeMenuItem === el.path
+                        ? "font-bold"
+                        : "font-normal"
                     } px-2`}
                   >
                     {el.name}
                   </div>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
           {/* profile menu */}

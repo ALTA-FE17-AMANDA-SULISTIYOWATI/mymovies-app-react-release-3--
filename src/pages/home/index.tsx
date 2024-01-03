@@ -8,11 +8,19 @@ import PlayIcon from "@/core/icons/play"
 import ShareIcon from "@/core/icons/share"
 import { Component } from "react"
 
-class Home extends Component {
+type Props = {
+  homeRef: React.RefObject<HTMLDivElement>
+  nowRef: React.RefObject<HTMLDivElement>
+  favRef: React.RefObject<HTMLDivElement>
+}
+
+class Home extends Component<Props> {
   render() {
+    const { homeRef, nowRef, favRef } = this.props
+
     return (
       <>
-        <div className="h-screen relative">
+        <div className="h-screen relative" ref={homeRef}>
           {/* background */}
           <div className="bg-[url('/images/hero.png')] h-screen bg-cover masked" />
           {/* content */}
@@ -45,7 +53,10 @@ class Home extends Component {
             </div>
           </div>
         </div>
-        <div className="w-full px-20 pt-8 border-t border-t-[#252427]">
+        <div
+          className="w-full px-20 pt-8 border-t border-t-[#252427]"
+          ref={nowRef}
+        >
           <div className="text=[#F9F9F9] text-2xl font-bold">Now Playing</div>
           <div className="my-8 grid grid-cols-6 gap-4">
             {nowPlayingMovies.map((el, i) => (
@@ -59,7 +70,10 @@ class Home extends Component {
             ))}
           </div>
         </div>
-        <div className="w-full px-20 pt-8 border-t border-t-[#252427]">
+        <div
+          className="w-full px-20 pt-8 border-t border-t-[#252427]"
+          ref={favRef}
+        >
           <div className="text=[#F9F9F9] text-2xl font-bold">Favorite</div>
           <div className="my-8 grid grid-cols-6 gap-4">
             {favoriteMovies.map((el, i) => (
