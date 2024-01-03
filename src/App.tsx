@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Home from "./pages/home"
 import NavbarWithRouter from "./components/navbar"
 import { RefObject, useRef } from "react"
+import Now from "./pages/now"
 
 function App() {
   const homeRef = useRef(null)
@@ -37,6 +38,7 @@ function App() {
             index
             element={<Home homeRef={homeRef} nowRef={nowRef} favRef={favRef} />}
           />
+          <Route path="now/:id" element={<Now />} />
         </Route>
       </Routes>
     </BrowserRouter>

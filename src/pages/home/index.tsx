@@ -7,6 +7,7 @@ import LikeIcon from "@/core/icons/like"
 import PlayIcon from "@/core/icons/play"
 import ShareIcon from "@/core/icons/share"
 import { Component } from "react"
+import { Link } from "react-router-dom"
 
 type Props = {
   homeRef: React.RefObject<HTMLDivElement>
@@ -60,13 +61,14 @@ class Home extends Component<Props> {
           <div className="text=[#F9F9F9] text-2xl font-bold">Now Playing</div>
           <div className="my-8 grid grid-cols-6 gap-4">
             {nowPlayingMovies.map((el, i) => (
-              <Card
-                key={i}
-                url={el.poster_path}
-                title={el.title}
-                icon={el.backdrop_path}
-                rating={el.vote_average}
-              />
+              <Link key={i} to={`/now/${el.id}`}>
+                <Card
+                  url={el.poster_path}
+                  title={el.title}
+                  icon={el.backdrop_path}
+                  rating={el.vote_average}
+                />
+              </Link>
             ))}
           </div>
         </div>
