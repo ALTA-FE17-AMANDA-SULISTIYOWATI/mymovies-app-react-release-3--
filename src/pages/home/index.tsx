@@ -1,6 +1,6 @@
 import Button from "@/components/button"
 import Card from "@/components/card"
-import { nowPlayingMovies } from "@/core/constant/movies"
+import { favoriteMovies, nowPlayingMovies } from "@/core/constant/movies"
 import BookmarkIcon from "@/core/icons/bookmark"
 import DownloadIcon from "@/core/icons/download"
 import LikeIcon from "@/core/icons/like"
@@ -49,6 +49,20 @@ class Home extends Component {
           <div className="text=[#F9F9F9] text-2xl font-bold">Now Playing</div>
           <div className="my-8 grid grid-cols-6 gap-4">
             {nowPlayingMovies.map((el, i) => (
+              <Card
+                key={i}
+                url={el.poster_path}
+                title={el.title}
+                icon={el.backdrop_path}
+                rating={el.vote_average}
+              />
+            ))}
+          </div>
+        </div>
+        <div className="w-full px-20 pt-8 border-t border-t-[#252427]">
+          <div className="text=[#F9F9F9] text-2xl font-bold">Favorite</div>
+          <div className="my-8 grid grid-cols-6 gap-4">
+            {favoriteMovies.map((el, i) => (
               <Card
                 key={i}
                 url={el.poster_path}
