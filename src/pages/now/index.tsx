@@ -1,3 +1,4 @@
+import Button from "@/components/button"
 import { nowPlayingMovies } from "@/core/constant/movies"
 import { ComponentProps, withRouter } from "@/core/utils/withRouter"
 import { Component } from "react"
@@ -25,11 +26,29 @@ class Now extends Component<ComponentProps> {
     console.log(selectedMovie)
 
     return (
-      <div className="flex flex-col gap-6 px-20 p-6 mt-32">
-        <div className="text-[#F9F9F9] text-xl font-bold">Data:</div>
-        <div>{selectedMovie.id}</div>
-        <div>{selectedMovie.title}</div>
-        <div>{selectedMovie.vote_average}</div>
+      <div className="flex gap-6 px-20 p-6 mt-44 justify-center items-center w-full">
+        <div>
+          <img
+            className="h-40 w-full rounded-2xl"
+            src={selectedMovie.poster_path}
+          />
+        </div>
+        <div>
+          <div className="justify-center items-center">
+            {selectedMovie.title}
+          </div>
+          <div>Release date: {selectedMovie.release_date}</div>
+          <div>Language: {selectedMovie.original_language}</div>
+          <div className="flex gap-1">
+            Rating:
+            <div>{selectedMovie.vote_average}</div>
+            <div className="py-px">{selectedMovie.backdrop_path}</div>
+          </div>
+          <div>Overview: {selectedMovie.overview}</div>
+          <div className="py-4">
+            <Button variant="contained" title="WATCH NOW" />
+          </div>
+        </div>
       </div>
     )
   }
