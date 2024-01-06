@@ -59,7 +59,7 @@ class Home extends Component<Props> {
           ref={nowRef}
         >
           <div className="text=[#F9F9F9] text-2xl font-bold">Now Playing</div>
-          <div className="my-8 grid grid-cols-6 gap-4">
+          <div className="my-8 grid grid-cols-5 gap-4">
             {nowPlayingMovies.map((el, i) => (
               <Link key={i} to={`/now/${el.id}`}>
                 <Card
@@ -77,7 +77,7 @@ class Home extends Component<Props> {
           ref={favRef}
         >
           <div className="text=[#F9F9F9] text-2xl font-bold">Favorite</div>
-          <div className="my-8 grid grid-cols-6 gap-4">
+          <div className="my-8 grid grid-cols-5 gap-4">
             {favoriteMovies.map((el, i) => (
               <Card
                 key={i}

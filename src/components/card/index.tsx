@@ -12,7 +12,7 @@ class Card extends Component<Props> {
     const { url, title, icon, rating } = this.props
 
     return (
-      <div className="hover:scale-105 transition duration-300 ease-in-out w-[300px] cursor-pointer">
+      <div className="hover:scale-105 transition duration-300 ease-in-out w-[175px] cursor-pointer">
         <div className="">
           <img className="h-40 w-full rounded-2xl" src={url} />
         </div>

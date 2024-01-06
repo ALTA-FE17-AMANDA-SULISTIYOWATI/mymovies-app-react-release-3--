@@ -29,12 +29,12 @@ class Now extends Component<ComponentProps> {
       <div className="flex gap-6 px-20 p-6 mt-44 justify-center items-center w-full">
         <div>
           <img
-            className="h-40 w-full rounded-2xl"
+            className="h-[323px] w-[627px] rounded-2xl"
             src={selectedMovie.poster_path}
           />
         </div>
         <div>
-          <div className="justify-center items-center">
+          <div className="justify-center items-center font-bold text-2xl py-4">
             {selectedMovie.title}
           </div>
           <div>Release date: {selectedMovie.release_date}</div>
