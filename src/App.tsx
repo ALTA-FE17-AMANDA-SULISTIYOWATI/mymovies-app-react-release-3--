@@ -3,6 +3,7 @@ import Home from "./pages/home"
 import NavbarWithRouter from "./components/navbar"
 import { RefObject, useRef } from "react"
 import Now from "./pages/now"
+import Favorite from "./pages/favorite"
 
 function App() {
   const homeRef = useRef(null)
@@ -39,6 +40,7 @@ function App() {
             element={<Home homeRef={homeRef} nowRef={nowRef} favRef={favRef} />}
           />
           <Route path="now/:id" element={<Now />} />
+          <Route path="favorite/:id" element={<Favorite />} />
         </Route>
       </Routes>
     </BrowserRouter>

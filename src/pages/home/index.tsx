@@ -79,13 +79,15 @@ class Home extends Component<Props> {
           <div className="text=[#F9F9F9] text-2xl font-bold">Favorite</div>
           <div className="my-8 grid grid-cols-5 gap-4">
             {favoriteMovies.map((el, i) => (
-              <Card
-                key={i}
-                url={el.poster_path}
-                title={el.title}
-                icon={el.backdrop_path}
-                rating={el.vote_average}
-              />
+              <Link key={i} to={`/favorite/${el.id}`}>
+                <Card
+                  key={i}
+                  url={el.poster_path}
+                  title={el.title}
+                  icon={el.backdrop_path}
+                  rating={el.vote_average}
+                />
+              </Link>
             ))}
           </div>
         </div>
