@@ -29,7 +29,7 @@ class Now extends Component<ComponentProps> {
       <div className="flex gap-6 px-20 p-6 mt-44 justify-center items-center w-full">
         <div>
           <img
-            className="h-[323px] w-[627px] rounded-2xl"
+            className="h-[323px] w-[1000px] rounded-2xl"
             src={selectedMovie.poster_path}
           />
         </div>
