@@ -1,6 +1,7 @@
 import Button from "@/components/button"
 import Card from "@/components/card"
-import { favoriteMovies, nowPlayingMovies } from "@/core/constant/movies"
+import NowPlaying from "@/components/nowplaying"
+import { favoriteMovies } from "@/core/constant/movies"
 import BookmarkIcon from "@/core/icons/bookmark"
 import DownloadIcon from "@/core/icons/download"
 import LikeIcon from "@/core/icons/like"
@@ -59,17 +60,8 @@ class Home extends Component<Props> {
           ref={nowRef}
         >
           <div className="text=[#F9F9F9] text-2xl font-bold">Now Playing</div>
-          <div className="my-8 grid grid-cols-5 gap-4">
-            {nowPlayingMovies.map((el, i) => (
-              <Link key={i} to={`/now/${el.id}`}>
-                <Card
-                  url={el.poster_path}
-                  title={el.title}
-                  icon={el.backdrop_path}
-                  rating={el.vote_average}
-                />
-              </Link>
-            ))}
+          <div>
+            <NowPlaying />
           </div>
         </div>
         <div
