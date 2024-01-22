@@ -1,59 +1,21 @@
-import Button from "@/components/button"
-import { nowPlayingMovies } from "@/core/constant/movies"
-import { ComponentProps, withRouter } from "@/core/utils/withRouter"
-import { Component } from "react"
+import React from "react"
+import { useParams } from "react-router-dom"
+import MovieDetailsComponent from "@/components/moviedetails"
 
-class Now extends Component<ComponentProps> {
-  render() {
-    const { router } = this.props
+interface NowProps {}
 
-    const { location } = router
+const Now: React.FC<NowProps> = () => {
+  const { id } = useParams<{ id: string }>()
 
-    const { pathname } = location
-
-    const pathSegments = pathname.split("/")
-
-    const id = pathSegments[pathSegments.length - 1]
-
-    const selectedMovie = nowPlayingMovies.find(
-      (movie) => movie.id === Number(id)
-    )
-
-    if (!selectedMovie) {
-      return <div>Movie not found</div>
-    }
-
-    console.log(selectedMovie)
-
-    return (
-      <div className="flex gap-6 px-20 p-6 mt-44 justify-center items-center w-full">
-        <div>
-          <img
-            className="h-[323px] w-[1000px] rounded-2xl"
-            src={selectedMovie.poster_path}
-          />
-        </div>
-        <div>
-          <div className="justify-center items-center font-bold text-2xl py-4">
-            {selectedMovie.title}
-          </div>
-          <div>Release date: {selectedMovie.release_date}</div>
-          <div>Language: {selectedMovie.original_language}</div>
-          <div className="flex gap-1">
-            Rating:
-            <div>{selectedMovie.vote_average}</div>
-            <div className="py-px">{selectedMovie.backdrop_path}</div>
-          </div>
-          <div>Overview: {selectedMovie.overview}</div>
-          <div className="py-4">
-            <Button variant="contained" title="WATCH NOW" />
-          </div>
-        </div>
-      </div>
-    )
+  if (!id) {
+    return <div>Movie ID not found</div>
   }
+
+  return (
+    <div className="flex gap-6 px-20 p-6 mt-24 justify-center items-center w-full">
+      <MovieDetailsComponent movieId={id} />
+    </div>
+  )
 }
 
-const NowWithRouter = withRouter(Now)
-
-export default NowWithRouter
+export default Now

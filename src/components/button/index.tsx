@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React from "react"
 
 type Props = {
   variant?: string
@@ -6,25 +6,21 @@ type Props = {
   title?: string
 }
 
-class Button extends Component<Props> {
-  render() {
-    const { variant, icon, title } = this.props
-
-    return (
-      <button
-        className={`flex items-center justify-center py-[12px] px-[24px] rounded-lg ${
-          variant === "contained"
-            ? "bg-greenColor border border-greenColor"
-            : "bg-blackColor border border-whiteColor"
-        }`}
-      >
-        <div className="flex gap-2 items-center">
-          {icon}
-          <div className="text-[14px] font-bold">{title}</div>
-        </div>
-      </button>
-    )
-  }
+const Button: React.FC<Props> = ({ variant, icon, title }) => {
+  return (
+    <button
+      className={`flex items-center justify-center py-[12px] px-[24px] rounded-lg ${
+        variant === "contained"
+          ? "bg-greenColor border border-greenColor"
+          : "bg-blackColor border border-whiteColor"
+      }`}
+    >
+      <div className="flex gap-2 items-center">
+        {icon}
+        <div className="text-[14px] font-bold">{title}</div>
+      </div>
+    </button>
+  )
 }
 
 export default Button

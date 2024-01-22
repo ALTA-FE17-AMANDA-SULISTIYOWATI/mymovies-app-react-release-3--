@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React from "react"
 
 type Props = {
   url?: string
@@ -7,25 +7,21 @@ type Props = {
   rating?: number
 }
 
-class Card extends Component<Props> {
-  render() {
-    const { url, title, icon, rating } = this.props
-
-    return (
-      <div className="hover:scale-105 transition duration-300 ease-in-out w-[175px] cursor-pointer">
-        <div className="">
-          <img className="h-40 w-full rounded-2xl" src={url} />
-        </div>
-        <div className="mt-2">
-          <div>{title}</div>
-        </div>
-        <div className="flex items-center gap-2">
-          {icon}
-          {rating}
-        </div>
+const Card: React.FC<Props> = ({ url, title, icon, rating }) => {
+  return (
+    <div className="hover:scale-105 transition duration-300 ease-in-out w-[175px] cursor-pointer">
+      <div className="">
+        <img className="rounded-2xl" src={url} alt={title} />
       </div>
-    )
-  }
+      <div className="mt-2">
+        <div>{title}</div>
+      </div>
+      <div className="flex items-center gap-2">
+        {icon}
+        {rating}
+      </div>
+    </div>
+  )
 }
 
 export default Card
