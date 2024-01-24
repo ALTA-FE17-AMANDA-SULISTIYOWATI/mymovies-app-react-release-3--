@@ -46,24 +46,30 @@ const MovieDetailsComponent: React.FC<MovieDetailsProps> = ({ movieId }) => {
   }
 
   return (
-    <div className="flex items-center justify-center">
-      <div className="w-1/2 px-8">
-        <img
-          className="w-56 h-80 object-fill"
-          src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
-        />
-      </div>
-      <div className="">
-        <div className="font-bold text-3xl">{movieDetails.title}</div>
-        <div className="gap-4 text-lg">
-          <p>Release Date : {movieDetails.release_date}</p>
-          <p>Language : {movieDetails.original_language}</p>
-          <p> Popularity : {movieDetails.popularity}</p>
-          <p>Overview : {movieDetails.overview}</p>
+    <div className="flex flex-wrap">
+      <div className="flex items-center ">
+        <div className="w-1/2 px-5">
+          <img
+            className="w-56 h-80"
+            src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
+          />
         </div>
-        <div className="flex gap-20 py-6 space-x-2.5">
-          <Button variant="contained" title="WATCH MOVIE" icon={<PlayIcon />} />
-          <Button title="Add Favorite" />
+        <div>
+          <div className="font-bold text-3xl">{movieDetails.title}</div>
+          <div className="gap-4 text-lg">
+            <p>Release Date : {movieDetails.release_date}</p>
+            <p>Language : {movieDetails.original_language}</p>
+            <p> Popularity : {movieDetails.popularity}</p>
+            <p>Overview : {movieDetails.overview}</p>
+          </div>
+          <div className="flex gap-20 py-6 space-x-2.5">
+            <Button
+              variant="contained"
+              title="WATCH MOVIE"
+              icon={<PlayIcon />}
+            />
+            <Button title="Add Favorite" />
+          </div>
         </div>
       </div>
     </div>
